@@ -1,1 +1,219 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Multiple Inheritance & Class Modifiers</title>
 
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Courier New', monospace;
+    background:#020617;
+    color:#38bdf8;
+}
+
+/* BACKGROUND */
+body::before{
+    content:"";
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:
+    radial-gradient(circle at 30% 40%, rgba(56,189,248,0.15), transparent 40%),
+    radial-gradient(circle at 70% 60%, rgba(14,165,233,0.15), transparent 40%);
+    z-index:-1;
+}
+
+/* HEADER DARK */
+.header{
+    background:rgba(2,6,23,0.95);
+}
+
+/* JUDUL BIRU */
+.header h1{
+    color:#38bdf8;
+    text-shadow:
+        0 0 5px #38bdf8,
+        0 0 15px #38bdf8,
+        0 0 25px #0ea5e9;
+}
+
+/* NAMA JADI BIRU & TERLIHAT */
+.identitas p{
+    color:#38bdf8;
+    text-shadow:0 0 6px #38bdf8;
+}
+
+/* SECTION */
+.section{
+    margin:20px;
+    padding:20px;
+    border:1px solid #38bdf8;
+    border-radius:12px;
+    background:rgba(2,6,23,0.85);
+    box-shadow:0 0 15px rgba(56,189,248,0.3);
+    transition:0.3s;
+}
+
+.section:hover{
+    transform:translateY(-5px);
+    box-shadow:0 0 25px #38bdf8;
+}
+/* ===== WARNA GLOBAL (SEMUA BIRU) ===== */
+body{
+    color:#38bdf8;
+}
+
+/* ===== JUDUL SOAL (IKUT BIRU) ===== */
+.section h2{
+    color:#38bdf8 !important;
+    text-shadow:0 0 8px #38bdf8;
+    margin-bottom:2px !important;
+    line-height:1.2;
+}
+
+/* ===== NAMA DI BAWAH JUDUL ===== */
+.nama{
+    color:#38bdf8;
+    font-size:14px;
+    margin-top:5px;
+    margin-bottom:10px;
+    text-shadow:0 0 6px #38bdf8;
+}
+
+/* ===== PENGERTIAN ===== */
+.section p{
+    color:#38bdf8;
+    text-shadow:0 0 6px #38bdf8;
+    margin-bottom:5px;
+}
+
+/* ===== GARIS PEMBATAS ===== */
+.section h2::after{
+    content:"";
+    display:block;
+    width:100%;
+    height:2px;
+    background:#38bdf8;
+    margin-top:8px;
+    margin-bottom:5px;
+}
+
+/* ===== IDENTITAS ATAS ===== */
+.identitas p{
+    color:#38bdf8;
+    text-shadow:0 0 6px #38bdf8;
+}
+    /* CODE */
+.code-box{
+    background:#0f172a;
+    padding:15px;
+    border-radius:10px;
+    border:1px solid #38bdf8;
+    overflow:auto;
+    margin-top:15px;
+}
+
+/* CODE COLOR */
+.keyword{color:#60a5fa;}
+.type{color:#38bdf8;}
+.string{color:#facc15;}
+.comment{color:#94a3b8;}
+
+/* BUTTON */
+.button{
+    margin-top:10px;
+    padding:8px 15px;
+    background:#38bdf8;
+    border:none;
+    cursor:pointer;
+    color:black;
+    border-radius:5px;
+    font-weight:bold;
+}
+
+/* IMAGE */
+img{
+    margin-top:10px;
+    max-width:100%;
+    height:auto;
+    display:none;
+    border-radius:8px;
+}
+
+    .section ul{
+    margin-top:2px;
+}
+
+.section p{
+    margin-bottom:5px;
+}
+    
+</style>
+<script>
+let activeElement = null;
+
+function showContent(id) {
+    if (activeElement) {
+        activeElement.style.display = "none";
+    }
+
+    const el = document.getElementById(id);
+
+    if (activeElement === el) {
+        activeElement = null;
+        return;
+    }
+
+    el.style.display = "block";
+    activeElement = el;
+}
+
+// TAMBAHKAN DI SINI (di bawah showContent, masih dalam <script>)
+function runDart(id, url) {
+    if (activeElement) {
+        activeElement.style.display = "none";
+    }
+
+    const frame = document.getElementById(id);
+
+    if (activeElement === frame) {
+        activeElement = null;
+        return;
+    }
+
+    frame.src = url;
+    frame.style.display = "block";
+
+    activeElement = frame;
+}
+</script>
+</head>
+
+<body>
+<div class="container">
+
+<div class="header" style="padding: 30px; text-align:center;">
+    
+    <!-- JUDUL UTAMA -->
+    <h1 style="font-size: clamp(2.2em, 6vw, 2.8em); margin: 0; line-height: 1.3; font-weight: bold;">Multiple Inheritance</h1>
+    <h1 style="font-size: clamp(2.2em, 6vw, 2.8em); margin: 5px 0; line-height: 1.3; font-weight: bold;">&</h1>
+    <h1 style="font-size: clamp(2.2em, 6vw, 2.8em); margin: 0; line-height: 1.3; font-weight: bold;">Class Modifiers</h1>
+
+    <!-- GARIS PEMBATAS -->
+    <hr style="width: 60%; max-width: 300px; margin: 20px auto; border: none; height: 2px; background-color: #38bdf8;">
+
+    <!-- DATA DIRI -->
+    <div class="identitas">
+        <p>Yoza Ulpia Rafila</p>
+        <p>251410004</p>
+        <p>SI2A</p>
+    </div>
+
+</div>
