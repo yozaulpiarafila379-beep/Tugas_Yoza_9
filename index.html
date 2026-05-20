@@ -217,3 +217,85 @@ function runDart(id, url) {
     </div>
 
 </div>
+
+<!-- 1 -->
+<div class="section">
+<h2>1.Builder Pattern</h2>
+<ul>
+  <li>
+    Pada program ini, <b>Bentuk</b> digunakan sebagai <i>abstract class</i> 
+    yang berfungsi sebagai dasar untuk mendefinisikan berbagai jenis bangun datar 
+    melalui method <b>hitungLuas()</b>.
+  </li>
+
+  <li>
+    Class <b>Bentuk</b> tidak dapat dibuat objek secara langsung karena bersifat abstrak 
+    dan hanya digunakan sebagai kerangka dasar bagi class turunannya.
+  </li>
+
+  <li>
+    Class <b>Persegi</b>, <b>Lingkaran</b>, dan <b>Segitiga</b> merupakan turunan 
+    dari class <b>Bentuk</b> yang mengimplementasikan method 
+    <b>hitungLuas()</b> sesuai dengan rumus masing-masing bangun.
+  </li>
+
+  <li>
+    Setiap class turunan memiliki cara perhitungan luas yang berbeda, 
+    sehingga konsep <i>polimorfisme</i> dapat diterapkan pada program ini.
+  </li>
+
+  <li>
+    Pada fungsi <b>main()</b>, objek dari setiap class dibuat untuk melakukan 
+    proses perhitungan luas berdasarkan data yang diberikan.
+  </li>
+
+  <li>
+    Program kemudian menampilkan hasil perhitungan luas dari bangun persegi, 
+    lingkaran, dan segitiga ke layar sebagai output akhir.
+  </li>
+</ul>
+<h3>Kode Dart:</h3>
+<div class="code-box">
+<pre><code>
+// ==========================================
+// Judul : Builder Pattern
+// Nama  : Yoza Ulpia Rafila
+// NIM   : 251410004
+// Kelas : SI2A
+// ==========================================
+
+class Config {}
+
+class ConfigBuilder {
+
+  ConfigBuilder host(String h) {
+    print("Host : $h");
+    return this;
+  }
+
+  ConfigBuilder port(int p) {
+    print("Port : $p");
+    return this;
+  }
+
+  Config build() {
+    print("Config berhasil dibuat");
+    return Config();
+  }
+}
+
+void main() {
+
+  ConfigBuilder()
+      .host('localhost')
+      .port(8080)
+      .build();
+}
+</code></pre>
+</div>
+<button class="button" 
+onclick="runDart('dart1','https://dartpad.dev/embed-inline.html?id=8b4cd6b544dc7f7de2faae288b649d3b&split=60&run=true')">
+Tampilkan DartPad 1
+</button>
+<iframe id="dart8" style="display:none; width:100%; height:300px;"></iframe>
+</div>
