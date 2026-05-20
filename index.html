@@ -223,35 +223,35 @@ function runDart(id, url) {
 <h2>1.Builder Pattern</h2>
 <ul>
   <li>
-    Pada program ini, <b>Bentuk</b> digunakan sebagai <i>abstract class</i> 
-    yang berfungsi sebagai dasar untuk mendefinisikan berbagai jenis bangun datar 
-    melalui method <b>hitungLuas()</b>.
+    Pada program ini, <b>ConfigBuilder</b> digunakan untuk menerapkan konsep 
+    <i>Builder Pattern</i> dalam pembuatan objek <b>Config</b>.
   </li>
 
   <li>
-    Class <b>Bentuk</b> tidak dapat dibuat objek secara langsung karena bersifat abstrak 
-    dan hanya digunakan sebagai kerangka dasar bagi class turunannya.
+    Method <b>host()</b> dan <b>port()</b> digunakan untuk mengatur nilai 
+    konfigurasi secara bertahap sebelum objek dibuat.
   </li>
 
   <li>
-    Class <b>Persegi</b>, <b>Lingkaran</b>, dan <b>Segitiga</b> merupakan turunan 
-    dari class <b>Bentuk</b> yang mengimplementasikan method 
-    <b>hitungLuas()</b> sesuai dengan rumus masing-masing bangun.
+    Setiap method pada <b>ConfigBuilder</b> mengembalikan nilai 
+    <b>this</b> sehingga method dapat dipanggil secara berantai 
+    (<i>method chaining</i>).
   </li>
 
   <li>
-    Setiap class turunan memiliki cara perhitungan luas yang berbeda, 
-    sehingga konsep <i>polimorfisme</i> dapat diterapkan pada program ini.
+    Method <b>build()</b> digunakan untuk membuat dan mengembalikan objek 
+    <b>Config</b> setelah semua konfigurasi selesai diatur.
   </li>
 
   <li>
-    Pada fungsi <b>main()</b>, objek dari setiap class dibuat untuk melakukan 
-    proses perhitungan luas berdasarkan data yang diberikan.
+    Pada fungsi <b>main()</b>, objek konfigurasi dibuat dengan cara 
+    memanggil method secara berurutan menggunakan konsep 
+    <i>Builder Pattern</i>.
   </li>
 
   <li>
-    Program kemudian menampilkan hasil perhitungan luas dari bangun persegi, 
-    lingkaran, dan segitiga ke layar sebagai output akhir.
+    Program kemudian menampilkan informasi host, port, dan pesan bahwa 
+    konfigurasi berhasil dibuat.
   </li>
 </ul>
 <h3>Kode Dart:</h3>
