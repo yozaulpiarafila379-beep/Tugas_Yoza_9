@@ -462,3 +462,91 @@ Tampilkan DartPad 3
 style="display:none; width:100%; height:300px;">
 </iframe>
 </div>
+
+<!-- 4 -->
+<div class="section">
+<h2>4.Solusi dengan Extension Methods</h2>
+<ul>
+  <li>
+    Pada program ini, <i>extension methods</i> digunakan untuk menambahkan 
+    method baru pada tipe data <b>DateTime</b>.
+  </li>
+
+  <li>
+    Method <b>toFormattedString()</b> digunakan untuk mengubah format tanggal 
+    menjadi lebih mudah dibaca.
+  </li>
+
+  <li>
+    Getter <b>isToday</b> digunakan untuk memeriksa apakah tanggal yang digunakan 
+    sama dengan tanggal hari ini.
+  </li>
+
+  <li>
+    Operator <b>+</b> digunakan untuk menambahkan durasi waktu pada objek 
+    <b>DateTime</b>.
+  </li>
+
+  <li>
+    Pada fungsi <b>main()</b>, program menampilkan tanggal saat ini, 
+    memeriksa apakah tanggal tersebut adalah hari ini, dan menambahkan 
+    satu hari ke tanggal sekarang.
+  </li>
+
+  <li>
+    Program kemudian menampilkan hasil pengolahan tanggal ke layar.
+  </li>
+</ul>
+<h3>Kode Dart:</h3>
+<div class="code-box">
+<pre><code>
+// ==========================================
+// Nama  : Yoza Ulpia Rafila
+// NIM   : 251410004
+// Kelas : SI2A
+// ==========================================
+
+extension DateTimeExtensions on DateTime {
+
+  // Method
+  String toFormattedString() {
+    return '$day/$month/$year';
+  }
+
+  // Getter
+  bool get isToday {
+    var now = DateTime.now();
+
+    return year == now.year &&
+           month == now.month &&
+           day == now.day;
+  }
+
+  // Operator
+  DateTime operator +(Duration duration) {
+    return add(duration);
+  }
+}
+
+void main() {
+
+  DateTime today = DateTime.now();
+
+  print('Tanggal hari ini        : ${today.toFormattedString()}');
+  print('Apakah hari ini?        : ${today.isToday}');
+
+  DateTime nextDay = today + Duration(days: 1);
+
+  print('Tanggal setelah ditambah: ${nextDay.toFormattedString()}');
+}
+</code></pre>
+</div>
+<button class="button" 
+onclick="runDart('dart4','https://dartpad.dev/embed-inline.html?id=9a516f210fbcae52a177b8631c7799e4&split=60&run=true')">
+Tampilkan DartPad 4
+</button>
+
+<iframe id="dart4" 
+style="display:none; width:100%; height:300px;">
+</iframe>
+</div>
