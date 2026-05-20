@@ -696,3 +696,90 @@ Tampilkan DartPad 6
 style="display:none; width:100%; height:300px;">
 </iframe>
 </div>
+
+<!-- 7 -->
+<div class="section">
+<h2>7.Praktik 1 – Utilities untuk Dart Types</h2>
+<ul>
+  <li>
+    Pada program ini, <i>extension methods</i> digunakan pada tipe data 
+    <b>num</b> untuk menambahkan beberapa fungsi tambahan.
+  </li>
+
+  <li>
+    Method <b>toRupiah()</b> digunakan untuk mengubah angka menjadi format 
+    mata uang rupiah.
+  </li>
+
+  <li>
+    Method <b>isBetween()</b> digunakan untuk memeriksa apakah suatu angka 
+    berada di antara nilai minimum dan maksimum.
+  </li>
+
+  <li>
+    Method <b>power()</b> digunakan untuk menghitung nilai perpangkatan 
+    dari sebuah angka.
+  </li>
+
+  <li>
+    Pada fungsi <b>main()</b>, program melakukan format angka ke rupiah, 
+    pengecekan range angka, dan perhitungan perpangkatan.
+  </li>
+
+  <li>
+    Program kemudian menampilkan hasil pengolahan angka ke layar.
+  </li>
+</ul>
+<h3>Kode Dart:</h3>
+<div class="code-box">
+<pre><code>
+// ==========================================
+// Nama  : Yoza Ulpia Rafila
+// NIM   : 251410004
+// Kelas : SI2A
+// ==========================================
+
+extension NumberExtensions on num {
+
+  // Format ke Rupiah
+  String toRupiah() {
+    return 'Rp${toStringAsFixed(0)}';
+  }
+
+  // Cek nilai dalam range
+  bool isBetween(num min, num max) {
+    return this >= min && this <= max;
+  }
+
+  // Pangkat
+  num power(int exponent) {
+
+    var result = this;
+
+    for (var i = 1; i < exponent; i++) {
+      result *= this;
+    }
+
+    return result;
+  }
+}
+
+void main() {
+
+  var price = 150000;
+
+  print('Harga dalam rupiah : ${price.toRupiah()}');
+  print('Apakah antara 1-10 : ${5.isBetween(1, 10)}');
+  print('Hasil 2 pangkat 3  : ${2.power(3)}');
+}
+</code></pre>
+</div>
+<button class="button" 
+onclick="runDart('dart7','https://dartpad.dev/embed-inline.html?id=bfe193a6afd3270a72df033093129482&split=60&run=true')">
+Tampilkan DartPad 7
+</button>
+
+<iframe id="dart7" 
+style="display:none; width:100%; height:300px;">
+</iframe>
+</div>
