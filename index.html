@@ -783,3 +783,109 @@ Tampilkan DartPad 7
 style="display:none; width:100%; height:300px;">
 </iframe>
 </div>
+
+<!-- 8 -->
+<div class="section">
+<h2>8.Generic Extensions</h2>
+<ul>
+  <li>
+    Pada program ini, <i>generic extension</i> digunakan pada tipe data 
+    <b>List&lt;T&gt;</b> sehingga dapat digunakan untuk berbagai jenis data.
+  </li>
+
+  <li>
+    Method <b>getOrNull()</b> digunakan untuk mengambil data berdasarkan index 
+    secara aman tanpa menyebabkan error.
+  </li>
+
+  <li>
+    Method <b>chunk()</b> digunakan untuk membagi list menjadi beberapa bagian 
+    kecil sesuai ukuran yang ditentukan.
+  </li>
+
+  <li>
+    Method <b>distinct()</b> digunakan untuk menghapus data yang duplikat 
+    pada list.
+  </li>
+
+  <li>
+    Pada fungsi <b>main()</b>, program membagi list angka menjadi beberapa 
+    kelompok dan menghapus data yang sama.
+  </li>
+
+  <li>
+    Program kemudian menampilkan hasil pengolahan list ke layar.
+  </li>
+</ul>
+<h3>Kode Dart:</h3>
+<div class="code-box">
+<pre><code>
+// ==========================================
+// Nama  : Yoza Ulpia Rafila
+// NIM   : 251410004
+// Kelas : SI2A
+// ==========================================
+
+extension ListExtensions<T> on List<T> {
+
+  // Mengambil index dengan aman
+  T? getOrNull(int index) {
+    if (index < 0 || index >= length) {
+      return null;
+    }
+
+    return this[index];
+  }
+
+  // Membagi list menjadi beberapa bagian
+  List<List<T>> chunk(int size) {
+
+    var chunks = <List<T>>[];
+
+    for (var i = 0; i < length; i += size) {
+
+      chunks.add(
+        sublist(i, i + size > length ? length : i + size)
+      );
+    }
+
+    return chunks;
+  }
+
+  // Menghapus data duplikat
+  List<T> distinct() {
+
+    var result = <T>[];
+
+    for (var item in this) {
+
+      if (!result.contains(item)) {
+        result.add(item);
+      }
+    }
+
+    return result;
+  }
+}
+
+void main() {
+
+  var numbers = [1, 2, 3, 4, 5, 6, 7];
+
+  print('Data chunk : ${numbers.chunk(3)}');
+
+  print(
+    'Data distinct : ${[1, 2, 2, 3, 3].distinct()}'
+  );
+}
+</code></pre>
+</div>
+<button class="button" 
+onclick="runDart('dart8','https://dartpad.dev/embed-inline.html?id=ef03d8f3a328d9d8fd2cb25d24af4106&split=60&run=true')">
+Tampilkan DartPad 8
+</button>
+
+<iframe id="dart8" 
+style="display:none; width:100%; height:300px;">
+</iframe>
+</div>
