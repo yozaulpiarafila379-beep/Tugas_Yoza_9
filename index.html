@@ -1433,47 +1433,47 @@ style="display:none; width:100%; height:300px;">
 <h3>Kode Program VS Code:</h3>
 <div class="code-box">
 <pre><code>
+// ======================================
+// Bonus1: Konflik Nama Antar Extension
 // Nama  : Yoza Ulpia Rafila
 // NIM   : 251410004
-// Kelas : SI2A
+// Kelas : SI.2A
+// ======================================
 
-class Repository {
-  void create() {
-    print("Data berhasil ditambahkan");
-  }
+// Extension pertama
+extension StringNumber on String {
 
-  void read() {
-    print("Menampilkan data");
-  }
-
-  void update() {
-    print("Data berhasil diupdate");
-  }
-
-  void delete() {
-    print("Data berhasil dihapus");
+  int toInt() {
+    return int.parse(this);
   }
 }
 
-class UserRepository extends Repository {
-  @override
-  void read() {
-    print("Menampilkan data user");
+// Extension kedua
+extension StringDouble on String {
+
+  double toDouble() {
+    return double.parse(this);
   }
 }
 
 void main() {
-  UserRepository repo = UserRepository();
 
-  repo.create();
-  repo.read();
-  repo.update();
-  repo.delete();
+  String angka = '123';
+
+  // Menggunakan extension int
+  print(
+    StringNumber(angka).toInt()
+  );
+
+  // Menggunakan extension double
+  print(
+    StringDouble(angka).toDouble()
+  );
 }
 </code></pre>
 </div>
 <button class="button" 
-onclick="runDart('dart13','https://dartpad.dev/embed-inline.html?id=e98eb9366fa22dcb7a6d4efebae91929&split=60&run=true')">
+onclick="runDart('dart13','https://dartpad.dev/embed-inline.html?id=703c1293af2a76c63f26fa525097be95&split=60&run=true')">
 Tampilkan DartPad 13
 </button>
 
