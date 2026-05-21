@@ -1229,3 +1229,176 @@ Tampilkan DartPad 11
 style="display:none; width:100%; height:300px;">
 </iframe>
 </div>
+
+<!-- 12 -->
+<div class="section">
+<h2>12.Praktik 2 – Validator Extensions</h2>
+<ul>
+  <li>
+    Pada program ini, extension digunakan pada tipe data 
+    <b>String</b> dan <b>int</b> untuk melakukan validasi data.
+  </li>
+
+  <li>
+    Extension <b>StringValidators</b> digunakan 
+    untuk memvalidasi email, nomor telepon, password, dan URL.
+  </li>
+
+  <li>
+    Getter <b>isEmail</b> digunakan untuk mengecek 
+    apakah format email valid.
+  </li>
+
+  <li>
+    Getter <b>isPhoneNumber</b> digunakan untuk mengecek 
+    apakah nomor telepon hanya berisi angka.
+  </li>
+
+  <li>
+    Getter <b>isStrongPassword</b> digunakan untuk mengecek 
+    apakah password memiliki huruf besar, huruf kecil, 
+    angka, dan panjang minimal 8 karakter.
+  </li>
+
+  <li>
+    Extension <b>IntValidators</b> digunakan untuk mengecek 
+    usia dewasa, bilangan positif, genap, dan ganjil.
+  </li>
+
+  <li>
+    Pada fungsi <b>main()</b>, program menguji beberapa data 
+    menggunakan extension validator.
+  </li>
+
+  <li>
+    Program kemudian menampilkan hasil validasi data 
+    ke layar dalam bentuk true atau false.
+  </li>
+</ul>
+<h3>Kode Dart:</h3>
+<div class="code-box">
+<pre><code>
+// ======================================
+// Slide 13: Praktik 2 - Validator Extensions
+// Nama  : Yoza Ulpia Rafila
+// NIM   : 251410004
+// Kelas : SI.2A
+// ======================================
+
+// Extension validator String
+extension StringValidators on String {
+
+  // Validasi email
+  bool get isEmail {
+
+    return RegExp(
+      r'^[\w\.-]+@([\w-]+\.)+[\w-]{2,4}$',
+    ).hasMatch(this);
+  }
+
+  // Validasi nomor HP
+  bool get isPhoneNumber {
+
+    return RegExp(
+      r'^[0-9]{10,13}$',
+    ).hasMatch(this);
+  }
+
+  // Validasi password kuat
+  bool get isStrongPassword {
+
+    return length >= 8 &&
+        contains(
+          RegExp(r'[A-Z]')
+        ) &&
+        contains(
+          RegExp(r'[a-z]')
+        ) &&
+        contains(
+          RegExp(r'[0-9]')
+        );
+  }
+
+  // Validasi URL
+  bool get isUrl {
+
+    try {
+
+      Uri.parse(this);
+
+      return true;
+
+    } catch (_) {
+
+      return false;
+    }
+  }
+}
+
+// Extension validator int
+extension IntValidators on int {
+
+  bool get isAdultAge =>
+      this >= 18;
+
+  bool get isPositive =>
+      this > 0;
+
+  bool get isEven =>
+      this % 2 == 0;
+
+  bool get isOdd =>
+      this % 2 != 0;
+}
+
+void main() {
+
+  var email =
+      'test@example.com';
+
+  var age = 25;
+
+  var password =
+      'Pass1234';
+
+  var phone =
+      '081234567890';
+
+  print("=== VALIDATOR DATA ===");
+
+  print(
+    "Email valid : "
+    "${email.isEmail}"
+  );
+
+  print(
+    "Nomor HP valid : "
+    "${phone.isPhoneNumber}"
+  );
+
+  print(
+    "Password kuat : "
+    "${password.isStrongPassword}"
+  );
+
+  print(
+    "Usia dewasa : "
+    "${age.isAdultAge}"
+  );
+
+  print(
+    "Bilangan genap : "
+    "${10.isEven}"
+  );
+}
+</code></pre>
+</div>
+<button class="button" 
+onclick="runDart('dart12','https://dartpad.dev/embed-inline.html?id=7060134de586752f357052ee74768e82&split=60&run=true')">
+Tampilkan DartPad 12
+</button>
+
+<iframe id="dart12" 
+style="display:none; width:100%; height:300px;">
+</iframe>
+</div>
